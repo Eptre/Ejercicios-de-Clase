@@ -1,131 +1,199 @@
-/* Este programa dibuja una "Tetera", este objeto esta definido
- * en GLUT, se crea una fuente de luz, y un material */
+/*Paniagua Trejo Erick
+Grupo 02
+Visual Studio 2017
+Ejercicio en clase #2
 
-//Incluimos las librerias
-//#include <GL/glut.h>
-//#include <stdlib.h>
+Este código muestra las letras E P C G.
+Cada una hecha con la función LG_QUADS para armar cada
+palabra con rectángulos.
+*/
+
 #include "Main.h"
-
-
-void init(void)
+void InitGL(GLvoid)     // Inicializamos parametros
 {
-	 // Ubicamos la fuente de luz en el punto (1.0, 1.0, 1.0)
-	 //GLfloat light_position[] = { 1.0, 1.0, 1.0, 0.0 };
+	//glShadeModel(GL_FLAT);							// Habilitamos Smooth Shading
+	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);				// Negro de fondo
+	//glClearDepth(1.0f);									// Configuramos Depth Buffer
+	//glEnable(GL_DEPTH_TEST);							// Habilitamos Depth Testing
+	//glDepthFunc(GL_LEQUAL);								// Tipo de Depth Testing a realizar
 
-	 // Activamos la fuente de luz
-	 glEnable(GL_LIGHTING);
-	 glEnable(GL_LIGHT0);
 
-	 glClearDepth(1.0f);					// Activamos el valor de inicio del buffer de profundidad
-	 glEnable(GL_DEPTH_TEST);				// Hacemos la prueba de profundidad
-	 glDepthFunc(GL_LEQUAL);				// Tipo de prueba de profundidad a hacer
-	 return;
 }
 
-void reshape(int w, int h)
+void display(void)   // Creamos la funcion donde se dibuja
 {
-	 if (!h)
-		return;
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);	// Limiamos pantalla y Depth Buffer	
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();									// Reinicializamos la actual matriz Modelview
 
-	 glViewport(0, 0,  (GLsizei) w, (GLsizei) h);
-	 // Activamos la matriz de proyeccion.
-	 glMatrixMode(GL_PROJECTION);
-	 // "limpiamos" esta con la matriz identidad.
-	 glLoadIdentity();
-	 // Usamos proyeccion ortogonal
-	  //glOrtho(-200, 200, -200, 200, -200, 200);
-	 gluPerspective(30.0f, (GLfloat)800/(GLfloat)600, 0.03, 1000.0);
-	 // Activamos la matriz de modelado/visionado. 
-	 glMatrixMode(GL_MODELVIEW);
-	 // "Limpiamos" la matriz
-	 glLoadIdentity();
-	 return;
+	//Poner aqui codigo ha dibujar
+
+    ///////////////////////////////////////
+	glBegin(GL_QUADS);                   //
+	glColor3f(1, 0, 0);                  //
+	glVertex3f(5.0f, 3.0f, -1.0f);       // 
+	glVertex3f(5.0f, 1.0f, -1.0f);       // 
+	glVertex3f(11.0f, 1.0f, -1.0f);      //
+	glVertex3f(11.0f, 3.0f, -1.0f);      //
+									     //
+	glColor3f(1, 0, 0);                  //
+	glVertex3f(5.0f, -4.0f, -1.0f);      //
+	glVertex3f(5.0f, 3.0f, -1.0f);       //
+	glColor3f(0, 1, 0);                  //--------> C
+	glVertex3f(7.0f, 3.0f, -1.0f);       //
+	glVertex3f(7.0f, -4.0f, -1.0f);      //
+	                                     //
+	glColor3f(0, 1, 0);                  //
+	glVertex3f(7.0f, -4.0f, -1.0f);      //
+	glVertex3f(7.0f, -2.0f, -1.0);       //
+	glVertex3f(11.0f, -2.0f, -1.0);      //
+	glVertex3f(11.0f, -4.0f, -1.0);      //
+	                                     //
+	glEnd();                             //
+	                                     //
+	///////////////////////////////////////
+
+	//////////////////////////////////////
+	glBegin(GL_QUADS);                  //
+	glColor3f(1, 0,0);                  //
+	glVertex3f(-4.0f, 3.0f, -1.0f);     //
+	glVertex3f(-2.0f, 3.0f, -1.0f);     //
+	glColor3f(0, 1, 0);                 //
+	glVertex3f(-2.0f, -4.0f, -1.0f);    //
+	glVertex3f(-4.0f, -4.0f, -1.0f);    //-----> P
+	                                    //
+	glColor3f(1, 0, 0);                 //
+	glVertex3f(-2.0f, -1.0f, -1.0f);    //
+	glVertex3f(-2.0f, 3.0f, -1.0f);     //
+	glVertex3f(2.0f, 3.0f, -1.0f);      //
+	glVertex3f(2.0f, -1.0f, -1.0f);     //
+	glEnd();                            //
+	////////////////////////////////////// 
+
+
+
+	///////////////////////////////////////
+	                                     //
+	glBegin(GL_QUADS);                   //
+	                                     //
+	glColor3f(0, 1, 0);                  //
+	glVertex3f(-15.0f,-2.0f,-1.0f);      //
+	glVertex3f(-15.0f, -4.0f, -1.0f);    //
+	glVertex3f(-10.0f, -4.0f, -1.0);     //
+	glVertex3f(-10.0f, -2.0f, -1.0);     //
+	                                     //
+	glColor3f(0, 1, 0);                  //
+	glVertex3f(-15.0f, 2.5f, -1.0f);     //
+	glVertex3f(-15.0f, -4.0f, -1.0f);    //----------> E
+	glColor3f(1, 0, 0);                  //
+	glVertex3f(-13.0f, -4.0f, -1.0f);    //
+	glVertex3f(-13.0f, 2.5f, -1.0f);     //
+	                                     //
+	glColor3f(1, 0, 0);                  //
+	glVertex3f(-13.0f, -1.0f,-1.0);      //
+	glColor3f(0, 1, 0);                  //
+	glVertex3f(-13.0f,-0.5f,-1.0);       //
+	glVertex3f(-10.0f, -0.5f, -1.0);     //
+	glVertex3f(-10.0f, -1.0f, -1.0f);    //
+	                                     //
+	                                     //
+	glColor3f(1, 0, 0);                  //
+	glVertex3f(-13.0f, 2.5f,-1.0);       //
+	glVertex3f(-13.0f, 0.5f, -1.0f);     //
+	glVertex3f(-10.0,0.5f,-1.0f);        //
+	glVertex3f(-10.0f, 2.5f, -1.0f);     //
+	glEnd();                             //
+	//////////////////////////////////////
+
+
+    ///////////////////////////////////////
+										 //
+	glBegin(GL_QUADS);                   //
+										 //
+	glColor3f(0, 1, 0);                  //
+	glVertex3f(12.0f, -2.0f, -1.0f);     //
+	glVertex3f(12.0f, -4.0f, -1.0f);     //
+	glVertex3f(18.0f, -4.0f, -1.0);      //
+	glVertex3f(18.0f, -2.0f, -1.0);      //
+	                                     //
+	glColor3f(0, 1, 0);                  //
+	glVertex3f(12.0f, 2.5f, -1.0f);      //
+	glVertex3f(12.0f, -4.0f, -1.0f);     //
+	glColor3f(1, 0, 0);                  //
+	glVertex3f(14.0f, -4.0f, -1.0f);     //
+	glVertex3f(14.0f, 2.5f, -1.0f);      //
+	                                     //
+	glColor3f(0, 1, 0);                  //
+	glVertex3f(17.0f, -0.5f, -1.0f);     //
+	glVertex3f(17.0f, -4.0f, -1.0f);     //
+	glColor3f(1, 0, 0);                  //
+	glVertex3f(18.0f, -4.0f, -1.0f);     //
+	glVertex3f(18.0f, -0.5f, -1.0f);     //
+                                         //---------------> G
+	glColor3f(1, 0, 0);                  //
+	glVertex3f(12.0f, -1.0f, -1.0);      //
+	glColor3f(0, 1, 0);                  //
+	glVertex3f(12.0f, -0.5f, -1.0);      //
+	glVertex3f(18.0f, -0.5f, -1.0);      //
+	glVertex3f(18.0f, -1.0f, -1.0f);     //
+	                                     //
+	glColor3f(1, 0, 0);                  //
+	glVertex3f(12.0f, 3.0f, -1.0);       //
+	glVertex3f(12.0f, 0.5f, -1.0f);      //
+	glVertex3f(18.0, 0.5f, -1.0f);       //
+	glVertex3f(18.0f, 3.0f, -1.0f);      //
+	glEnd();                             //
+	//////////////////////////////////////
+
+	glEnd();
+
+	glFlush();
 }
 
-// Aqui ponemos lo que queremos dibujar.
-void display(void)
-{ 
-	 // Propiedades del material
-	 GLfloat mat_ambient[] = { 0.7f, 0.7f, 0.7f, 1.0f };
-	 GLfloat mat_diffuse[] = { 0.1f, 0.5f, 0.8f, 1.0f };
-	 GLfloat mat_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-	 GLfloat mat_shininess[] = { 100.0f };
+void reshape(int width, int height)   // Creamos funcion Reshape
+{
+	if (height == 0)										// Prevenir division entre cero
+	{
+		height = 1;
+	}
 
-	 // "Limpiamos" el frame buffer con el color de "Clear", en este 
-	 // caso negro. 
-	 glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glViewport(0, 0, width, height);
 
-	 glMatrixMode( GL_MODELVIEW_MATRIX );
-	 glLoadIdentity();
- 
-	 glTranslatef(0.0,0.0,-20.0);
-	 // Rotacion de 30 grados en torno al eje x
-	 glRotated(30.0, 1.0, 0.0, 0.0);
-	 // Rotacion de -30 grados en torno al eje y
-	 //glRotated(-30.0, 0.0, 1.0, 0.0);
-	 glRotated(-30, 0.0, 1.0, 0.0);
-	 // Dibujamos una "Tetera" y le aplico el material
+	glMatrixMode(GL_PROJECTION);						// Seleccionamos Projection Matrix
+	glLoadIdentity();
 
-	 glMaterialfv(GL_FRONT, GL_AMBIENT, mat_ambient);
-	 glMaterialfv(GL_FRONT, GL_DIFFUSE, mat_diffuse);
-	 glMaterialfv(GL_FRONT, GL_SPECULAR, mat_specular);
-	 glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
-	 glutSolidTeapot(1.0);
-	 //glutWireCube(2.0f);
+	// Ortogonal
+	glOrtho(-20, 20, -20, 20, 0.1, 2);
 
-	 //glFlush();
-	 glutSwapBuffers ( );
-	 return;
-} 
+	glMatrixMode(GL_MODELVIEW);							// Seleccionamos Modelview Matrix
+	glLoadIdentity();
+}
 
 // Termina la ejecucion del programa cuando se presiona ESC
 void keyboard(unsigned char key, int x, int y)
 {
-	 switch (key) 
-	 {
-		case 27: exit(0);
-				 break;
+	switch (key)
+	{
+	case 27: exit(0);
+		break;
+	}
+	glutPostRedisplay();
+}
 
-		case 'x':
-			//rot += 10;
-			break;
-	 }
-	  glutPostRedisplay();
-	  return;
-}    
+int main(int argc, char** argv)   // Main Function
+{
+	glutInit(&argc, argv); // Inicializamos OpenGL
+	glutInitDisplayMode(GLUT_RGBA | GLUT_SINGLE); // Display Mode (Clores RGB y alpha | Buffer Sencillo )
+	glutInitWindowSize(700, 700);	// Tamaño de la Ventana
+	glutInitWindowPosition(0, 0);	//Posicion de la Ventana
+	glutCreateWindow("Practica 2"); // Nombre de la Ventana
+	InitGL();						// Parametros iniciales de la aplicacion
+	glutDisplayFunc(display);  //Indicamos a Glut función de dibujo
+	glutReshapeFunc(reshape);	//Indicamos a Glut función en caso de cambio de tamano
+	glutKeyboardFunc(keyboard);	//Indicamos a Glut función de manejo de teclado
+	glutMainLoop();          // 
 
-// Main del programa.
-int main(int argc, char **argv)
-{ 
-	 // Inicializo OpenGL
-	 glutInit(&argc, argv);
-	 
-	 // Activamos buffer simple y colores del tipo RGB  
-	 //glutInitDisplayMode (GLUT_SINGLE | GLUT_RGB| GLUT_DEPTH);
-	 glutInitDisplayMode (GLUT_DOUBLE | GLUT_RGB| GLUT_DEPTH);
-
-	 // Definimos una ventana de medidas 300 x 300 como ventana 
-	 // de visualizacion en pixels
-	 glutInitWindowSize (300, 300);
-	 
-	 // Posicionamos la ventana en la esquina superior izquierda de 
-	 // la pantalla.
-	 glutInitWindowPosition (0, 0);
-
-	 // Creamos literalmente la ventana y le adjudicamos el nombre que se
-	 // observara en su barra de titulo.
-	 glutCreateWindow ("Tetera");
-
-	 // Inicializamos el sistema 
-	 init();
-
-	 glutDisplayFunc(display); 
-	 glutReshapeFunc(reshape);
-	 glutKeyboardFunc(keyboard);
-	 glutMainLoop();
-	 
-	 // ANSI C requiere que main retorne un valor entero.
-	 return 0;
+	return 0;
 }
 
 
